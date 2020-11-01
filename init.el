@@ -9,6 +9,10 @@
 
 (package-initialize)
 
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
 (load-theme 'zenburn t)
 
 ;; Download Evil
@@ -24,8 +28,15 @@
   :ensure t
   :init
   (elpy-enable))
+(setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i")
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((J . t)
+   (python . t)))
 
 (defun my-inhibit-startup-screen-file ()
   "Startup screen inhibitor for `command-line-functions`.
