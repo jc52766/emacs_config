@@ -9,6 +9,13 @@
 
 (package-initialize)
 
+;; Add this to your emacs config
+(add-to-list 'load-path "~/.emacs.d/elpa/j-mode-20171224.1856/")
+(autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
+(setq org-babel-J-command "ijconsole-9.01")
+
+;; Add for detection of j source files if the auto-load fails
+(add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
